@@ -1,0 +1,13 @@
+{
+  "expenses": [
+    {
+      "date": "2026-08-24",
+      "category": "Food",
+      "amount": 200.0,
+      "description": "Chinese"
+    }
+  ],
+  "budgets": {
+    "overall": 0.0
+  }
+}
