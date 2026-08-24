@@ -4,13 +4,16 @@ import os
 DATA_FILE = "data/expenses_data.json"
 
 def load_data(tracker):
-    if os.path.exists(tracker.filename):
-        data = json.load(tracker.filename)
-        tracker.expenses = data.get("expenses", [])
-        tracker.budgets = data.get("budgets", {"overall": 0.0})
-    else:
+    if not os.path.exists(tracker.filename):
         tracker.expenses = []
-        tracker.budget = {"overall": 0.0}
+        tracker.budgets = {"overall": 0.0}
+        return
+
+    with open(tracker.filename, "r") as f:
+        data = json.load(f)
+
+    tracker.expenses = data.get("expenses", [])
+    tracker.budgets = data.get("budgets", {"overall": 0.0})
 
 
 def save_data(tracker):
